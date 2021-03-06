@@ -1,7 +1,6 @@
 package com.bookshop.vct.entity;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -32,7 +31,15 @@ public class Oder {
             cascade = CascadeType.ALL)
 	private List<OderItem> oderItems;
 	
-	private LocalDate oderDate;
+	private LocalDateTime oderDate;
+	
+	private boolean isDelivered;
+	
+	private LocalDateTime deliverdTime;
+	
+	private boolean isPay;
+	
+	private LocalDateTime payTime;
 	
 	private double total;
 	
