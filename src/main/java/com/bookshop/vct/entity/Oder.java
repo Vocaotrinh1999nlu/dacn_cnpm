@@ -14,7 +14,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
+@Getter 
+@Setter 
+@NoArgsConstructor
 public class Oder {
 
 	@Id
@@ -35,56 +42,4 @@ public class Oder {
     @JoinColumn(name = "customer_id", nullable = false)
 	private Customer customer;
 
-	public Oder() {
-		super();
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public List<OderItem> getOderItems() {
-		return oderItems;
-	}
-
-	public void setOderItems(List<OderItem> oderItems) {
-		this.oderItems = oderItems;
-	}
-
-	public LocalDate getOderDate() {
-		return oderDate;
-	}
-
-	public void setOderDate(LocalDate oderDate) {
-		this.oderDate = oderDate;
-	}
-
-	public double getTotal() {
-		return total;
-	}
-
-	public void setTotal(double total) {
-		this.total = total;
-	}
-
-	public String getShipAdress() {
-		return shipAdress;
-	}
-
-	public void setShipAdress(String shipAdress) {
-		this.shipAdress = shipAdress;
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-	
 }
