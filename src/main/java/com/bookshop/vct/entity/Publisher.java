@@ -24,8 +24,6 @@ public class Publisher {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String image;
-	
 	private String description;
 	
 	private boolean isActive;

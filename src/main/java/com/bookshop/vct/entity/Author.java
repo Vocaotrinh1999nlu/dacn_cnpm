@@ -26,8 +26,6 @@ public class Author {
 	
 	private String name;
 	
-	private String detail;
-	
 	private boolean isActive;
 	
 	@OneToMany(mappedBy = "author", fetch = FetchType.LAZY,
