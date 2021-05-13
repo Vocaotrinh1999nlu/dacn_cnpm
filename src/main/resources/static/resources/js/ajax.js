@@ -146,8 +146,10 @@ $(document).ready(function () {
                     id : id,
                     newQuantity : newQuantity ,
     		    }
-    		}).done(function (book) {
-    			$('.cart-total').text(book.total);
+    		}).done(function (total) {
+				console.log(total);
+				alert("Đơn hàng của bạn đã được cập nhật");
+    			$('.cart-total').text(total);
            });    
     });
     

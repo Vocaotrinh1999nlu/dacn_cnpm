@@ -26,11 +26,11 @@
                                     </thead>
                                     <tbody th:each="book : ${books}">
                                         <tr>
-                                            <td class="product-thumbnail"><a href="#"><img th:src="@{${book.item.image}}" width="80" height="100"></a></td>
-                                            <td class="product-name"><a href="#" th:text="${book.item.name}"></a></td>
-                                            <td class="product-price"><span class="amount" th:text="${book.item.price}"></span></td>
-                                            <td class="product-quantity"><input type="number" th:value="${book.quantity}" class="quantity" th:id="${book.item.id}"></td>
-                                            <td class="product-remove"><a th:href="@{'/removeCart/'+${book.item.id}}">X</a></td>
+                                            <td class="product-thumbnail"><a href="#"><img th:src="@{${book.product.image}}" width="80" height="100"></a></td>
+                                            <td class="product-name"><a href="#" th:text="${book.product.name}"></a></td>
+                                            <td class="product-price"><span class="amount" th:text="${book.product.price}"></span></td>
+                                            <td class="product-quantity"><input type="number" th:value="${book.quantity}" class="quantity" th:id="${book.product.id}"></td>
+                                            <td class="product-remove"><a th:href="@{'/removeCart/'+${book.product.id}}">X</a></td>
                                         </tr>
                                        
                                     </tbody>

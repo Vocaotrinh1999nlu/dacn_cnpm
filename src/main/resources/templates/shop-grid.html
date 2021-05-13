@@ -16,23 +16,8 @@
         				<div class="shop__sidebar">
         					<aside class="wedget__categories poroduct--cat">
         						<h3 class="wedget__title" th:text="#{lb.productcategories}"></h3>
-        						<ul>
-        							<li><a href="#" th:text="#{lb.biography}"></a></li>
-        							<li><a href="#" th:text="#{lb.business}"></a></li>
-        							<li><a href="#" th:text="#{lb.cookbook}"></a></li>
-        							<li><a href="#" th:text="#{lb.health}"></a></li>
-        							<li><a href="#" th:text="#{lb.history}"></a></li>
-        							<li><a href="#" th:text="#{lb.mystery}"></a></li>
-        							<li><a href="#" th:text="#{lb.inspiration}"></a></li>
-        							<li><a href="#" th:text="#{lb.romance}"></a></li>
-        							<li><a href="#" th:text="#{lb.fiction}"></a></li>
-        							<li><a href="#" th:text="#{lb.self}"></a></li>
-        							<li><a href="#" th:text="#{lb.humor}"></a></li>
-        							<li><a href="#">Harry Potter</a></li>
-        							<li><a href="#" th:text="#{lb.story}"></a></li>
-        							<li><a href="#" th:text="#{lb.kid}"></a></li>
-        							<li><a href="#" th:text="#{lb.toy}"></a></li>
-        							<li><a href="#" th:text="#{lb.hoodies}"></a></li>
+        						<ul th:each="category : ${listCategory}">
+        							<li><a th:href="@{'/category/'+${category.id}}" th:text="${category.title}"></a></li>
         						</ul>
         					</aside>
         					<aside class="wedget__categories pro--range">
@@ -56,24 +41,9 @@
         						</div>
         					</aside>
         					<aside class="wedget__categories poroduct--tag">
-        						<h3 class="wedget__title" th:text="#{lb.producttag}"></h3>
-        						<ul>
-        							<li><a href="#" th:text="#{lb.biography}"></a></li>
-        							<li><a href="#" th:text="#{lb.business}"></a></li>
-        							<li><a href="#" th:text="#{lb.cookbook}"></a></li>
-        							<li><a href="#" th:text="#{lb.health}"></a></li>
-        							<li><a href="#" th:text="#{lb.history}"></a></li>
-        							<li><a href="#" th:text="#{lb.mystery}"></a></li>
-        							<li><a href="#" th:text="#{lb.inspiration}"></a></li>
-        							<li><a href="#" th:text="#{lb.romance}"></a></li>
-        							<li><a href="#" th:text="#{lb.fiction}"></a></li>
-        							<li><a href="#" th:text="#{lb.self}"></a></li>
-        							<li><a href="#" th:text="#{lb.humor}"></a></li>
-        							<li><a href="#">Harry Potter</a></li>
-        							<li><a href="#" th:text="#{lb.story}"></a></li>
-        							<li><a href="#" th:text="#{lb.kid}"></a></li>
-        							<li><a href="#" th:text="#{lb.toy}"></a></li>
-        							<li><a href="#" th:text="#{lb.hoodies}"></a></li>
+        						<h3 class="wedget__title">Các tác giả</h3>
+        						<ul th:each="author : ${listAuthor}">
+        							<li><a th:href="@{'/author/'+${author.id}}" th:text="${author.name}"></a></li>
         						</ul>
         					</aside>
         					<aside class="wedget__categories sidebar--banner">
@@ -93,7 +63,7 @@
 			                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-grid" role="tab"><i class="fa fa-th"></i></a>
 			                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i class="fa fa-list"></i></a>
 			                        </div>
-			                        <p>Showing 1–12 of 40 results</p>
+			                        <h4 th:text="${message}"></h4>
 			                        <div class="orderby__wrapper">
 			                        	<span>Sort By</span>
 			                        	<select class="shot__byselect">

@@ -1,8 +1,11 @@
 package com.bookshop.vct.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.bookshop.vct.entity.Author;
@@ -13,6 +16,7 @@ import com.bookshop.vct.entity.Oder;
 import com.bookshop.vct.entity.OderItem;
 import com.bookshop.vct.entity.Product;
 import com.bookshop.vct.entity.Publisher;
+import com.bookshop.vct.entity.Role;
 import com.bookshop.vct.repositories.AuthorRepository;
 import com.bookshop.vct.repositories.CategoryRepository;
 import com.bookshop.vct.repositories.CommentRepository;
@@ -21,6 +25,7 @@ import com.bookshop.vct.repositories.OderItemRepository;
 import com.bookshop.vct.repositories.OderRepository;
 import com.bookshop.vct.repositories.ProductRepository;
 import com.bookshop.vct.repositories.PublisherRepository;
+import com.bookshop.vct.repositories.RoleRepository;
 
 @Service
 public class BookShopService {
@@ -48,6 +53,9 @@ public class BookShopService {
 	
 	@Autowired
 	private PublisherRepository publisherRepository;
+	
+	@Autowired
+	private RoleRepository roleRepository;
 	
 	//method for service
 	public void addAuthor(Author author) { 
@@ -104,5 +112,42 @@ public class BookShopService {
 	
 	public Publisher getPublisherByName(String name) {
 		return publisherRepository.getPublisherByName(name);
+	}
+	
+	public Page<Product> getProduct(int pageNumber){
+		PageRequest pageable = PageRequest.of(pageNumber, 12);
+		return productRepository.findAll(pageable);
+	}
+	
+	public Product getProductById(int id) {
+		return productRepository.getProductById(id);
+	}
+	
+	public List<Category> getCategories(){
+		return categoryRepository.findAll();
+	}
+	
+	public Category getCategoryById(int id) {
+		return categoryRepository.getCategoryBId(id);
+	}
+	
+	public List<Author> getAuthors(){
+		return authorRepository.findAll();
+	}
+	
+	public Author getAuthorById(int id) {
+		return authorRepository.getAuthorById(id);
+	}
+	
+	public Customer findCustomerByUserName(String userName) {
+		return customerRepository.findByUserName(userName);
+	}
+	
+	public Role getRoleByName(String name) {
+		return roleRepository.getRoleByName(name);
+	}
+	
+	public List<Product> getProductByAutoComplete(String value){
+		return productRepository.getProductAutoComplete(value);
 	}
 }

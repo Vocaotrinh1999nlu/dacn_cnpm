@@ -43,6 +43,14 @@ public class Oder {
 	
 	private double total;
 	
+	private double subtotal;
+	
+	private String currentcy;
+	
+	private double exchangeRate;
+	
+	private double shipingCost;
+	
 	private String shipAdress;
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>List Order</title>
+</head>
+<body>
+	<div th:insert="~{link :: links}"></div>
+	<div th:insert="~{header :: header}"></div>
+	<div class="wishlist-area section-padding--lg bg__white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="wishlist-content">
+                                <div class="wishlist-table wnro__table table-responsive">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th class="product-remove"></th>
+                                                <th class="product-thumbnail">Ngày đặt hàng</th>
+                                                <th class="product-name"><span class="nobr">Giá tiền</span></th>
+                                                <th class="product-price"><span class="nobr"> Tổng tiền </span></th>
+                                                <th class="product-stock-stauts"><span class="nobr"> Xem chi tiết </span></th>
+                                                <th class="product-add-to-cart"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody th:each="order : ${listOrder}">
+                                            <tr>
+                                                <td class="product-remove"><a href="#">×</a></td>
+                                                <td class="product-thumbnail" th:text="${order.oderDate}"></td>
+                                                <td class="product-name"><span class="amount" th:text="${order.total}"></span></td>
+                                                <td class="product-price"><span class="amount" th:text="${order.subtotal}"></span></td>
+                                                <td class="product-stock-status"><span class="wishlist-in-stock">Chi tiết</span></td>
+                                                <td class="product-add-to-cart">
+                                                <div th:switch="${order.isPay}">
+                                                <div th:case="${true}">
+                                                <p>Đã thanh toán<p>
+                                                </div>
+                                                <div th:case="${false}" >
+                                                <a th:href="@{'/paypage/'+${order.id}}">Thanh toán</a>
+                                                </div>
+                                                </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	<div th:insert="~{footer :: footer}"></div>
+	<script th:src="@{/resources/js/vendor/modernizr-3.5.0.min.js}"></script>
+	<script th:src="@{/resources/js/vendor/jquery-3.2.1.min.js}" ></script>
+	<script th:src="@{/resources/js/popper.min.js}" ></script>
+	<script th:src="@{/resources/js/bootstrap.min.js}" ></script>
+	<script th:src="@{/resources/js/plugins.js}"></script>
+	<script th:src="@{/resources/js/active.js}"></script>
+</body>
+</html>

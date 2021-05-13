@@ -11,4 +11,7 @@ public interface AuthorRepository extends JpaRepository<Author, Integer> {
 
 	@Query("SELECT a FROM Author a WHERE a.name = ?1")
 	public Author getAuthorByName(String name);
+	
+	@Query("SELECT a FROM Author a WHERE a.id = ?1")
+	public Author getAuthorById(int id);
 }

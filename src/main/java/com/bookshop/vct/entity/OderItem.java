@@ -31,4 +31,24 @@ public class OderItem {
     @JoinColumn(name = "oder_id", nullable = false)
 	private Oder oder;
 	
+	public OderItem(Product p) {
+		product = p;
+        quantity = 1;
+	}
+	public void incrementQuantity() {
+        quantity++;
+    }
+
+    public void decrementQuantity() {
+        quantity--;
+    }
+    
+    public double getItemTotal() {
+    	return roundOff(quantity*product.getPrice());
+    }
+    
+    private double roundOff(double x) {
+		long val = Math.round(x * 100); // cents
+		return val / 100.0;
+	}
 }
