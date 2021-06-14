@@ -1,8 +1,10 @@
 package com.bookshop.vct.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,8 +18,10 @@ import com.bookshop.vct.entity.Customer;
 import com.bookshop.vct.entity.Product;
 import com.bookshop.vct.entity.Publisher;
 import com.bookshop.vct.entity.ShoppingCart;
+import com.bookshop.vct.repositories.CustomerRepository;
 import com.bookshop.vct.service.BookShopService;
 import com.bookshop.vct.service.CustomerService;
+import com.bookshop.vct.service.MailService;
 
 
 @Controller
@@ -28,6 +32,12 @@ public class BookShopController {
 	
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private MailService mailService;
 	
 	@GetMapping(value = {"/","/index"})
 	public String home(Model model) {
@@ -99,7 +109,18 @@ public class BookShopController {
 		return "cart";
 	}
 	
-	
+	@GetMapping("/cart")
+	public String getCartPage(Model model, HttpSession session) {
+		ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+		if (cart == null) {
+			cart = new ShoppingCart();
+			session.setAttribute("cart", cart);
+		}
+		model.addAttribute("numberOfItems", cart.getNumberOfItems());
+		model.addAttribute("total", cart.getTotal());
+		model.addAttribute("books", cart.getItems());
+		return "cart";
+	}
 	
 	@GetMapping("/addCategoryView")
 	public String addCategoryView(Model model) {
@@ -161,9 +182,31 @@ public class BookShopController {
 		model.addAttribute("customer", new Customer());
 		return "addCustomer";
 	}
-	@PostMapping("/addCustomer")
-	public String saveCustomer(@ModelAttribute("customer") Customer customer, Model model) {
-		customerService.saveCustomer(customer);
-		return "login";
+	
+	@GetMapping("/singleProductSearch/{name}")
+	public String singleProductByName(@PathVariable("name")String name, Model model) {
+		model.addAttribute("book", bookShopService.findByName(name));
+		return "singleProduct";
+	}
+	
+	@GetMapping("/singleProduct/{id}")
+	public String singleProductById(@PathVariable("id")int id, Model model) {
+		model.addAttribute("book", bookShopService.findById(id));
+		return "singleProduct";
+	}
+	
+	@GetMapping("/formMailReset")
+	public String formEmailRest() {
+		return "formMailRest";
+	}
+	
+	@GetMapping("/drawChart")
+	public String drawChart() {
+		return "drawChart";
+	}
+	
+	@GetMapping("/dashBoard")
+	public String dashBoard() {
+		return "dashBoard";
 	}
 }

@@ -1,8 +1,10 @@
 package com.bookshop.vct.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -52,5 +54,10 @@ public class Customer {
             cascade = CascadeType.ALL)
 	private List<Oder> oders;
 	
-
+	@Column(name = "verification_code", length = 64)
+	private String verificationCode;
+	
+	@Column(name="forget_password_token", length = 64)
+	private String forgetPasswordToken;
+	
 }

@@ -11,4 +11,6 @@ public interface PublisherRepository extends JpaRepository<Publisher, Integer> {
 
 	@Query("SELECT p FROM Publisher p WHERE p.description = ?1")
 	public Publisher getPublisherByName(String name);
+	
+	
 }

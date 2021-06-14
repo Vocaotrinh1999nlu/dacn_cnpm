@@ -37,7 +37,7 @@
 										<ul class="item item03">
 											<li class="title"><a th:href="@{/shop-grid}">Shop Page</a></li>
 											<li><a href="myaccount">My Account</a></li>
-											<li><a href="cart.html">Cart Page</a></li>
+											<li><a th:href="@{/cart}">Cart Page</a></li>
 											<li><a href="checkout">Checkout Page</a></li>
 											<li><a href="wishlist.html">Wishlist Page</a></li>
 											<li><a href="error404.html">404 Page</a></li>
@@ -112,7 +112,7 @@
 												</ul>
 											</li>
 											<li><a href="myaccount">My Account</a></li>
-											<li><a href="cart">Cart Page</a></li>
+											<li><a th:href="@{/cart}">Cart Page</a></li>
 											<li><a href="checkout.html">Checkout Page</a></li>
 											<li><a href="wishlist.html">Wishlist Page</a></li>
 											<li><a href="403">404 Page</a></li>
@@ -137,7 +137,7 @@
 						<ul class="header__sidebar__right d-flex justify-content-end align-items-center">
 							<li class="shop_search"><a class="search__active" href="#"></a></li>
 							<li class="wishlist"><a href="#"></a></li>
-							<li class="shopcart"><a class="cartbox_active" href="#"><span class="product_qun">3</span></a>
+							<li class="shopcart"><a class="cartbox_active" th:href="@{/cart}"></a>
 								<!-- Start Shopping Cart -->
 								<div class="block-minicart minicart_active">
 								
@@ -202,7 +202,7 @@
 														<span><a href="#">My Account</a></span>
 														<span><a href="#">My Wishlist</a></span>
 														<span><a href="#">Sign In</a></span>
-														<span><a href="#">Create An Account</a></span>
+														<span><a th:href="@{/dashBoard}">Dash Board</a></span>
 													</div>
 												</div>
 											</div>

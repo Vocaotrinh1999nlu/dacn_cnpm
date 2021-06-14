@@ -147,7 +147,18 @@ public class BookShopService {
 		return roleRepository.getRoleByName(name);
 	}
 	
-	public List<Product> getProductByAutoComplete(String value){
+	public List<String> getProductByAutoComplete(String value){
 		return productRepository.getProductAutoComplete(value);
+	}
+	
+	public Product findByName(String name) {
+		return productRepository.findByName(name);
+	}
+	
+	public Product findById(int id) {
+		return productRepository.findById(id).get();
+	}
+	public int sumByMonth(int month) {
+		return oderItemRepository.sumByMonth(month);
 	}
 }

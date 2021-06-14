@@ -36,8 +36,7 @@
         									<span th:text="${book.price}">$</span>
         								</div>
 										<div class="product__overview">
-        									<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.</p>
-        									<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. </p>
+        									<p th:text="${book.description}"></p>
         								</div>
         								<div class="box-tocart d-flex">
         									<span>Qty</span>
@@ -50,9 +49,19 @@
 												<a class="compare" href="#"></a>
 											</div>
         								</div>
+        								<div class="product_meta">
+											<span class="posted_in">Tác giả: 
+												<a href="#" th:text="${book.author.name}"></a>, 
+											</span>
+										</div>
 										<div class="product_meta">
 											<span class="posted_in">Categories: 
-												<a href="#" th:text="${book.category}"></a>, 
+												<a href="#" th:text="${book.category.title}"></a>, 
+											</span>
+										</div>
+										<div class="product_meta">
+											<span class="posted_in">Nhà xuất bản: 
+												<a href="#" th:text="${book.publisher.description}"></a>, 
 											</span>
 										</div>
 										<div class="product-share">

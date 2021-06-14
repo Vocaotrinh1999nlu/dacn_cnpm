@@ -109,25 +109,27 @@ $(document).ready(function () {
     //auto complete search
     $('#search').keyup(function() {
         var name = $('#search').val();
+		console.log(name);
     		$.ajax({
                 method : 'GET',
-                url : 'autoComplete',
+                url : 'getAutoComplete',
                 dataType : 'json',
                 cache: false,
     		    data :{ 
-    		    	name : name,
+    		    	name: name,
     		    }
-    		}).done(function (book) {
-    			console.log(book)
+    		}).done(function (product) {
+    			console.log(product)
                 var s ="";
     			if(name.length == 0){
                 	s='';
                 }else{
                 s += '<div class="alert alert-info">';
-                for(var i = 0; i < book.length; i++){
-                	s +='<a href="singleProduct/'+book[i].id+'" class="alert-link">'+ book[i].name+'</a></br>'
-                }
-                	s += '</div>';
+				for(var i = 0; i< product.length;i++){
+					s +='<a href="singleProductSearch/'+product[i]+'" class="alert-link">'+ product[i]+'</a></br>'
+				}
+				
+               	s += '</div>';
                 }
                 $("#autoCompleteSearch").html(s);
            });    

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet">
+ <script th:src="@{/resources/js/bootstrap.min.js}" ></script>
+ <script th:src="@{/resources/js/vendor/jquery-3.2.1.min.js}" ></script>
+</head>
+<body>
+	<div class="container">
+	  <h2>Nhập vào username của bạn</h2>
+	  <form th:action="@{/sendsendForgetPasswordToken}" method="post">
+	    <div class="form-group">
+	      <label for="username">User Name:</label>
+	      <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+	    </div>
+	    <button type="submit" class="btn btn-primary">Submit</button>
+	  </form>
+	</div>
+</body>
+</html>

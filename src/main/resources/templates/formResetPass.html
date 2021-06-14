@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Form Reset Password</title>
+<link th:href="@{/resources/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+	  <h2>Set new pass</h2>
+	  <form th:action="@{/setNewPassword}" method="post">
+	    <div class="form-group">
+	      <label for="pwd">Password:</label>
+	      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="newPass">
+	    </div>
+	    <div class="form-group">
+	      <label for="pwd">Comfirm Password:</label>
+	      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+	    </div>
+	    <button type="submit" class="btn btn-primary">Submit</button>
+	  </form>
+	</div>
+</body>
+</html>
